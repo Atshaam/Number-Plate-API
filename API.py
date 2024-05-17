@@ -61,9 +61,3 @@ def index(check: str):
         "POST", url, headers = headers, json = payload
     )
     return response.json(), check
-
-
-#to launch API locally in terminal: "uvicorn API:app --reload" - API can be replaced by name of file
-#/generate: Generates a random car number plate.
-#/validate: Validates a given car number plate for format compliance.
-#/check_registration: Checks the registration details of a car based on its number plate.
