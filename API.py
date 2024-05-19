@@ -60,4 +60,4 @@ def index(check: str):
     response = requests.request(
         "POST", url, headers = headers, json = payload
     )
-    return response.json(), check
+    return response.json()
