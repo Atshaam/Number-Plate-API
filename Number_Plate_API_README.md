@@ -28,20 +28,20 @@ Here are some examples on how to use each endpoint:
 
 '/generate': 
 
-'http://127.0.0.1:8000/generate?type=new' yields:
+'/generate?type=new' yields:
 
 {"message":"QD65 SRZ"} {as an example}
 
 
 '/validate': 
 
-'http://127.0.0.1:8000/validate?test=QD65%20SRZ' {'%20' replaces the space}, yields:
+'/validate?test=QD65%20SRZ' {'%20' replaces the space}, yields:
 
 '{"result":"valid}'
 
 '/retrieve':
 
-'http://127.0.0.1:8000/retrieve?check=AB12CDE', yields:
+'/retrieve?check=AB12CDE', yields:
 
 '{
   "registrationNumber": "AB12CDE",
@@ -62,7 +62,14 @@ Here are some examples on how to use each endpoint:
   "monthOfFirstRegistration": "2017-06"
 }'
 
+Contributing:
 
+Contributions to this project are welcome. If you encounter any issues or have suggestions for improvements, please create a GitHub issue or submit a pull request.
+
+Acknowledgments:
+
+DVLA for API
+Swagger for Time API
 
 
 
