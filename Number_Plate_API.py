@@ -6,48 +6,69 @@ import requests
 
 app = FastAPI()
 
-@app.get("/generate")
+response_ = requests.get('https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam')
+current_year = int(str(response_.json()['year'])[2:])
+current_month = int(response_.json()['month'])     
 
+@app.get("/generate")
 def index(type: str):
-        if type == "new":
-            while True:
-                product = f"{random.choice(string.ascii_letters).upper()}{random.choice(string.ascii_letters).upper()}{random.randint(0,9)}{random.randint(0,9)} {random.choice(string.ascii_letters).upper()}{random.choice(string.ascii_letters).upper()}{random.choice(string.ascii_letters).upper()}"
-                if 51 > int(product[2]+product[3]) > 24:
-                    True
-                elif 74 < int(product[2]+product[3]):
-                     True
-                else:
-                    return {
-                        "message": product
-                    }
-                    break
-                    
+        if type == 'new':
+          product = f"{random.choice(string.ascii_letters).upper()}{random.choice(string.ascii_letters).upper()}{random.randint(0,9)}{random.randint(0,9)} {random.choice(string.ascii_letters).upper()}{random.choice(string.ascii_letters).upper()}{random.choice(string.ascii_letters).upper()}"
+          reg_year = int(product[2:4])
+          while True:
+                    if reg_year > current_year:
+                         if current_month >= 9 and 50 < reg_year <= current_year + 50:
+                              return {
+                                   'message':product
+                              }
+                         elif 50 < reg_year <= current_year + 49:
+                              return {
+                                   'message':product
+                              }
+                         else:
+                              True
+                    else:
+                         return {
+                                   'message':product
+                              }
                 
+                              
         else: 
              return {
-                  "message": "invalid"
-             }
+                    "message": "invalid plate format"
+                         }
 @app.get("/validate")
 def index(test):
     if re.search(r"^[A-Z]{2}[0,1,2,5,6,7][0-9] ?[A-Z]{3}$", test.upper()):
-        if 51 > int(test[2]+test[3]) > 24:
-                return {
-                     "result": "invalid"
-                }
-        elif 74 < int(test[2]+test[3]):
-                return{
-                     "result":"invalid"
-                }
-        # space = %20 in URLs
+        test_year = int(test[2]+test[3])
+        if current_month > 9:
+             if 51 <= test_year <= current_year + 50:
+                  return {
+                     "result": "valid"
+                     }
+             elif 2 <= test_year <= current_year:
+                  return {
+                       "result":"valid"
+                  }
         else:
-            return {
-                "result": "valid"
-            }
+          if 2 <= test_year <= current_year:
+               return {
+                    "result":"valid"
+               }
+          elif 51 <= test_year <= current_year+49:
+               return {
+                    "result": "valid"
+               }
+          
+          else:
+               return {
+                    "result": "invalid"
+               }
+        
     else:
         return{
             "result": "invalid"
         }
-#using government API to get car details
 @app.get("/retrieve")
 def index(check: str):
     headers = {
@@ -60,4 +81,5 @@ def index(check: str):
     response = requests.request(
         "POST", url, headers = headers, json = payload
     )
+
     return response.json()
