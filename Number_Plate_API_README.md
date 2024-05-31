@@ -25,7 +25,47 @@ Requires Python 3.x
 Requires installation of the following libraries: FastAPI, random, string, re and requests
 
 Here are some examples on how to use each endpoint:
-...
+
+'/generate': 
+
+'http://127.0.0.1:8000/generate?type=new' yields:
+
+{"message":"QD65 SRZ"} {as an example}
+
+
+'/validate': 
+
+'http://127.0.0.1:8000/validate?test=QD65%20SRZ' {'%20' replaces the space}, yields:
+
+'{"result":"valid}'
+
+'/retrieve':
+
+'http://127.0.0.1:8000/retrieve?check=AB12CDE', yields:
+
+'{
+  "registrationNumber": "AB12CDE",
+  "taxStatus": "Taxed",
+  "taxDueDate": "2024-12-01",
+  "motStatus": "Valid",
+  "make": "VAUXHALL",
+  "yearOfManufacture": 2017,
+  "engineCapacity": 1399,
+  "co2Emissions": 128,
+  "fuelType": "PETROL",
+  "markedForExport": false,
+  "colour": "WHITE",
+  "typeApproval": "M1",
+  "dateOfLastV5CIssued": "2018-01-26",
+  "motExpiryDate": "2025-06-11",
+  "wheelplan": "2 AXLE RIGID BODY",
+  "monthOfFirstRegistration": "2017-06"
+}'
+
+
+
+
+
 
 
 
