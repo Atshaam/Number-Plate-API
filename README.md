@@ -14,6 +14,10 @@ API has 3 functions: can generate a new number plate following the current UK fo
 
 '/retrieve' has the query parameter 'check' if the number plate is in any valid UK format and is currently assigned to a vehicle then many different pieces of information from that vehicle are provided such as tax info, make, year of registration etc.
 
+## Demo:
+
+To get API running type 'uvicorn (your file name):app --reload' i.e. uvicorn Number_Plate_API:app --reload
+
 This API was built using the FastAPI framework.
 
 ## Data retrieval:
