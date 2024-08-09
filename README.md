@@ -16,13 +16,19 @@ API has 3 functions: can generate a new number plate following the current UK fo
 
 ## Demo:
 
-To get API running type into terminal
+To get API running type into terminal:
 
 ```python
 uvicorn Number_Plate_API:app --reload
 ```
 
-This API was built using the FastAPI framework.
+(Replace 'Number_Plate_API' with your own file name if it's different)
+
+![image](https://github.com/user-attachments/assets/eb5983ef-7720-448e-9f9f-585c20c13b1e)
+
+![image](https://github.com/user-attachments/assets/f7b4ed65-344b-4cdb-9d7a-f909a6b4714b)
+
+![image](https://github.com/user-attachments/assets/c200a8ab-632d-4755-9ceb-31bc44af13fe)
 
 ## Data retrieval:
 
