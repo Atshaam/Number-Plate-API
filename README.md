@@ -16,7 +16,7 @@ API has 3 functions: can generate a new number plate following the current UK fo
 
 ## Demo:
 
-To get API running type 
+To get API running type into terminal
 
 ```python
 uvicorn Number_Plate_API:app --reload
