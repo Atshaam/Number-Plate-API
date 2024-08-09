@@ -2,6 +2,8 @@
 
 ## Overview: 
 
+This API is built using the FastAPI framework.
+
 API has 3 functions: can generate a new number plate following the current UK format, can validate provided number plates against current UK format and can provide information on vehicles using given number plate in all valid UK formats
 
 ## How to use:
