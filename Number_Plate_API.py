@@ -72,7 +72,7 @@ def index(test):
 @app.get("/retrieve")
 def index(check: str):
     headers = {
-         "x-api-key": "0TN3ptrgL54LnZFQ2kRoS1tNoKQqr3Tv3eYJ0l7b"
+         "x-api-key": #ENTER YOUR API KEY
          }
     url = "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles"
     payload = {
